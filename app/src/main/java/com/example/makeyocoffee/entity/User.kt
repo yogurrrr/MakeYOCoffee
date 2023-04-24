@@ -4,11 +4,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
-@Entity(tableName = "device")
-data class Device(
-    @ColumnInfo(name = "device_id") @PrimaryKey(autoGenerate = true) val deviceId: Int,
+@Entity(tableName = "user")
+data class User(
+    @ColumnInfo(name = "user_id") @PrimaryKey(autoGenerate = true) val userId: Int,
     @ColumnInfo(name = "name") val name: String
 )
-
-
