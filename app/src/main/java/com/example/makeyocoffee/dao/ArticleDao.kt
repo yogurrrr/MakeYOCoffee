@@ -9,11 +9,11 @@ interface ArticleDao {
     suspend fun insert(vararg article: Article)
 
     @Update
-    fun update(article: Article)
+    suspend fun update(article: Article)
 
     @Update
-    fun update(articles: List<Article>): Int
+    suspend fun update(articles: List<Article>): Int
 
     @Delete
-    fun delete(article: Article)
+    suspend fun delete(article: Article)
 }

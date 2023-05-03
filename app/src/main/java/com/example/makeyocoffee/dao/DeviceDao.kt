@@ -10,12 +10,12 @@ interface DeviceDao {
     suspend fun insert(vararg device: Device)
 
     @Update
-    fun update(device: Device)
+    suspend fun update(device: Device)
 
     @Update
-    fun update(devices: List<Device>): Int
+    suspend fun update(devices: List<Device>): Int
 
     @Delete
-    fun delete(device: Device)
+    suspend fun delete(device: Device)
 
 }

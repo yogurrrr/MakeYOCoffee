@@ -9,16 +9,16 @@ interface RecipeDao {
     suspend fun insert(vararg recipe: Recipe)
 
     @Update
-    fun update(recipe: Recipe)
+    suspend fun update(recipe: Recipe)
 
     @Update
-    fun update(recipes: List<Recipe>): Int
+    suspend fun update(recipes: List<Recipe>): Int
 
     @Delete
-    fun delete(recipe: Recipe)
-
-//    @Query() TODO: запрос на поиск рецетов (rawquery)
+    suspend fun delete(recipe: Recipe)
 
     @Query("SELECT * FROM recipe")
-    fun getAllRecipes()
+    fun getAllRecipes(): List<Recipe>
+
+    //    @Query() TODO: запрос на поиск рецетов (rawquery)
 }

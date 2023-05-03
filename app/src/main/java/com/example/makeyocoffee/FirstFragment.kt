@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.makeyocoffee.database.AppDatabase
 import com.example.makeyocoffee.databinding.FragmentFirstBinding
+import kotlin.coroutines.coroutineContext
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -24,6 +26,9 @@ class FirstFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+//        val db = AppDatabase.getDatabase(context!!).recipeDao()
+//        val firstRecipe = db.getAllRecipes()[0]
+//        val text = context.get
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
 

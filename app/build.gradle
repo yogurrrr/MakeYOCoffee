@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.example.makeyocoffee'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.makeyocoffee"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -41,6 +41,7 @@ dependencies {
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
 
+    implementation "androidx.room:room-ktx:2.5.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.4.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
     implementation 'androidx.core:core-ktx:1.7.0'
