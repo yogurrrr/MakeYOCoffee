@@ -2,7 +2,6 @@ package com.example.makeyocoffee.entity
 
 import com.example.makeyocoffee.enums.Grinding
 import com.example.makeyocoffee.enums.Roasting
-import com.example.makeyocoffee.enums.Processing
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -27,7 +26,6 @@ data class Recipe(
     @ColumnInfo(name = "ingredients") val ingredients: String,
     @ColumnInfo(name = "grinding") val grinding: Grinding,
     @ColumnInfo(name = "roasting") val roasting: Roasting,
-//    @ColumnInfo(name = "processing") val processing: Processing?,
     @ColumnInfo(name = "device_id") val deviceId: Int,
     @ColumnInfo(name = "image_path") val imagePath: String // R.drawable.ic_delete
 )

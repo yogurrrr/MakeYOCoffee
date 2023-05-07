@@ -10,7 +10,8 @@ import com.example.makeyocoffee.entity.*
 
 @Database(
     entities = [Article::class, Device::class, Recipe::class, User::class, UserDevice::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
     companion object {
@@ -20,8 +21,8 @@ abstract class AppDatabase : RoomDatabase() {
                 synchronized(this) {
                     instance =
                         Room.databaseBuilder(context, AppDatabase::class.java, "database")
-                            .createFromAsset("sample.db")
-                            .build()
+                            .createFromAsset("databases/MakeYOCoffee.db")
+                            .allowMainThreadQueries().build()
                 }
             }
             return instance!!

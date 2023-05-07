@@ -9,6 +9,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import com.example.makeyocoffee.databinding.ActivityMainBinding
 import com.example.makeyocoffee.database.AppDatabase
 
@@ -19,9 +20,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-//        val db = AppDatabase.getDatabase(applicationContext)
-//        val recipes = db.recipeDao().getAllRecipes()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

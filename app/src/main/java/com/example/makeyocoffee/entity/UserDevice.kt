@@ -1,8 +1,6 @@
 package com.example.makeyocoffee.entity
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
+import androidx.room.*
 
 @Entity(
     tableName = "user_device",
@@ -18,9 +16,12 @@ import androidx.room.ForeignKey
             parentColumns = ["user_id"],
             childColumns = ["user_id"],
             onDelete = ForeignKey.CASCADE
-        )]
+        )],
+    indices = [Index(value = ["user_id", "device_id"],
+        unique = true)]
 )
 data class UserDevice(
+    @ColumnInfo(name = "user_device_id") @PrimaryKey(autoGenerate = true) val userDeviceId: Int = 0,
     @ColumnInfo(name = "user_id") val userId: Int,
     @ColumnInfo(name = "device_id") val deviceId: Int
 )
