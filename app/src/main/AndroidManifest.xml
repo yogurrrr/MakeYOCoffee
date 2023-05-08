@@ -16,7 +16,7 @@
             android:name=".Recipe_view"
             android:exported="false" />
         <activity
-            android:name=".Recipes_list"
+            android:name=".RecipesList"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

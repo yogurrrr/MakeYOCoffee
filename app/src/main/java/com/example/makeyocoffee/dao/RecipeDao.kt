@@ -1,6 +1,7 @@
 package com.example.makeyocoffee.dao
 
 import androidx.room.*
+import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.makeyocoffee.entity.Recipe
 
 @Dao
@@ -20,5 +21,6 @@ interface RecipeDao {
     @Query("SELECT * FROM recipe")
     fun getAllRecipes(): List<Recipe>
 
-    //    @Query() TODO: запрос на поиск рецетов (rawquery)
+    @RawQuery
+    fun getRecipesByFilters(query: SupportSQLiteQuery) : List<Recipe>
 }

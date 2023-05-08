@@ -9,5 +9,5 @@ import com.example.makeyocoffee.enums.Device
 @Entity(tableName = "device")
 data class Device(
     @ColumnInfo(name = "device_id") @PrimaryKey(autoGenerate = true) val deviceId: Int = 0,
-    @ColumnInfo(name = "name") val name: Device
+    @ColumnInfo(name = "device_name") val deviceName: Device
 )
