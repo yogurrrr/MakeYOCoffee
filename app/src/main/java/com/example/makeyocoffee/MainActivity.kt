@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         val cbFrenchPress: Button = findViewById(R.id.checkBox_frenchPress)
         val cbV60: Button = findViewById(R.id.checkBox_V60)
         val archiveButton = findViewById<Button>(R.id.toArchiveButton)
+        val articlesListButton = findViewById<Button>(R.id.toArticlesListButton)
 
 
         btn.setOnClickListener {
@@ -54,19 +55,13 @@ class MainActivity : AppCompatActivity() {
 
         archiveButton.setOnClickListener {
             val intent = Intent(this, ArticleView::class.java)
-
-/*            val checkedGrinding = ArrayList(grinding.filterValues { it == 1 }.keys)
-            intent.putStringArrayListExtra("grindingList", checkedGrinding)
-
-            val checkedRoasting = ArrayList(roasting.filterValues { it == 1 }.keys)
-            intent.putStringArrayListExtra("roastingList", checkedRoasting)
-
-            val checkedDevices = ArrayList(devices.filterValues { it == 1 }.keys)
-            intent.putStringArrayListExtra("devicesList", checkedDevices)*/
-
             startActivity(intent)
         }
 
+        articlesListButton.setOnClickListener {
+            val intent = Intent(this, ArticlesList::class.java)
+            startActivity(intent)
+        }
 
         //чекбоксы на помол
         cbFineGrinding.setOnClickListener {
