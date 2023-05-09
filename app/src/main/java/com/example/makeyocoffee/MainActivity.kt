@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         val cbCezve: Button = findViewById(R.id.checkBox_cezve)
         val cbFrenchPress: Button = findViewById(R.id.checkBox_frenchPress)
         val cbV60: Button = findViewById(R.id.checkBox_V60)
+        val archiveButton = findViewById<Button>(R.id.toArchiveButton)
 
 
         btn.setOnClickListener {
@@ -47,6 +48,21 @@ class MainActivity : AppCompatActivity() {
 
             val checkedDevices = ArrayList(devices.filterValues { it == 1 }.keys)
             intent.putStringArrayListExtra("devicesList", checkedDevices)
+
+            startActivity(intent)
+        }
+
+        archiveButton.setOnClickListener {
+            val intent = Intent(this, ArticleView::class.java)
+
+/*            val checkedGrinding = ArrayList(grinding.filterValues { it == 1 }.keys)
+            intent.putStringArrayListExtra("grindingList", checkedGrinding)
+
+            val checkedRoasting = ArrayList(roasting.filterValues { it == 1 }.keys)
+            intent.putStringArrayListExtra("roastingList", checkedRoasting)
+
+            val checkedDevices = ArrayList(devices.filterValues { it == 1 }.keys)
+            intent.putStringArrayListExtra("devicesList", checkedDevices)*/
 
             startActivity(intent)
         }
