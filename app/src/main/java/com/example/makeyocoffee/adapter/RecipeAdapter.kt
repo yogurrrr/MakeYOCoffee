@@ -12,12 +12,17 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
     private var recipesList = emptyList<Recipe>()
 
+    interface OnClickListener {
+        fun onClick(position: Int, model: Recipe)
+    }
+
+    private var onClickListener: OnClickListener? = null
+
     class RecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
         return RecipeViewHolder(
-            LayoutInflater.from(parent.context).
-            inflate(R.layout.recipe_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.recipe_item, parent, false)
         )
     }
 
@@ -28,12 +33,21 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
             recipe.shortDescription
         holder.itemView.findViewById<TextView>(R.id.recipeIngredients).text =
             recipe.ingredients
-
+        holder.itemView.setOnClickListener {
+            if (onClickListener != null) {
+                onClickListener!!.onClick(position, recipe)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
         return recipesList.size
     }
+
+    fun setOnClickListener(onClickListener: OnClickListener) {
+        this.onClickListener = onClickListener
+    }
+
 
     fun setData(recipes: List<Recipe>) {
         this.recipesList = recipes

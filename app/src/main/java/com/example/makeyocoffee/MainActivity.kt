@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         var roasting = hashMapOf<String, Int>("MEDIUM" to 0, "DARK" to 0) //filter, espresso
         var devices = hashMapOf<String, Int>(
             "CEZVE" to 0, "COFFEE_MACHINE" to 0, "GEYSER" to 0, "V60" to 0,
-            "AEROPRESS" to 0, "CHEMEX" to 0, "FRENCH_PRESS" to 0, "ANY" to 0
+            "AEROPRESS" to 0, "CHEMEX" to 0, "FRENCH_PRESS" to 0
         )
 
         val btn = findViewById<Button>(R.id.buttonNext)

@@ -13,7 +13,7 @@
         android:theme="@style/Theme.MakeYOCoffee"
         tools:targetApi="31">
         <activity
-            android:name=".Recipe_view"
+            android:name=".RecipeView"
             android:exported="false" />
         <activity
             android:name=".RecipesList"

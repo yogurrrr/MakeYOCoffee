@@ -8,46 +8,45 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [RecipeHolder.newInstance] factory method to
- * create an instance of this fragment.
- */
 class RecipeHolder : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var param1: Int? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-
-
+            param1 = it.getInt("position")
         }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view: View = inflater.inflate(R.layout.fragment_recipe_holder, container, false)
-        var title: TextView = view.findViewById(R.id.title)
-        var ingredients: TextView = view.findViewById(R.id.ingredients)
-        var instructions: TextView = view.findViewById(R.id.instructions)
+
+        val title: TextView = view.findViewById(R.id.title)
+        val ingredients: TextView = view.findViewById(R.id.ingredients)
+        val instructions: TextView = view.findViewById(R.id.instructions)
+
+//        val db = activity?.let { AppDatabase.getDatabase(it.applicationContext) }
+//        val recipeRepo = db?.let { RecipeRepository(it.recipeDao()) }
+//        val recipes = recipeRepo?.getAllRecipes()
+
+        title.text = arguments?.getString("title")
+        ingredients.text = arguments?.getString("ingredients")
+        instructions.text = arguments?.getString("instructions")
+//        val position = arguments?.getInt("position")
+//        if (position != null) {
+//            val recipe = position.let { recipes?.get(it) }
+//            if (recipe != null) {
+//                title.text = recipe.name
+//                ingredients.text = recipe.ingredients
+//                instructions.text = recipe.description
+//            }
+//        }
 
 
-        title.text = "title"
-        ingredients.text = "ingredients"
-        instructions.text = "instructions"
         // Inflate the layout for this fragment
         return view//inflater.inflate(R.layout.fragment_recipe_holder, container, false)
     }
@@ -64,11 +63,10 @@ class RecipeHolder : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(param1: Int) =
             RecipeHolder().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putInt("position", param1)
                 }
             }
     }

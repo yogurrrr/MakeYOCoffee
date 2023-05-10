@@ -2,17 +2,16 @@ package com.example.makeyocoffee
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.makeyocoffee.adapter.RecipeAdapter
 import com.example.makeyocoffee.database.AppDatabase
+import com.example.makeyocoffee.entity.Recipe
 import com.example.makeyocoffee.repository.RecipeRepository
 
 class RecipesList : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,9 +34,20 @@ class RecipesList : AppCompatActivity() {
         adapter.setData(recipes)
 
 
+        adapter.setOnClickListener(object :
+            RecipeAdapter.OnClickListener {
+            override fun onClick(position: Int, model: Recipe) {
+                val intent = Intent(this@RecipesList, RecipeView::class.java)
+                intent.putExtra("title", model.name)
+                intent.putExtra("ingredients", model.ingredients)
+                intent.putExtra("instructions", model.description)
+                startActivity(intent)
+            }
+        })
+
         val btn = findViewById<Button>(R.id.buttonShow)
         btn.setOnClickListener {
-            val intent = Intent(this, Recipe_view::class.java)
+            val intent = Intent(this@RecipesList, RecipeView::class.java)
             startActivity(intent)
         }
     }
