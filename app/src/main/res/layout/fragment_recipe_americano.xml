@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Американо"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ingredientstitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ингредиенты:"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ingredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="- Молотый кофе\n - Вода" />
+
+            <TextView
+                android:id="@+id/instructionstitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Рецепт:"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/instructions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="В зависимости от желаемого вами объема будет отличаться количество приготовленных шотов эспрессо.\n 1. Приготовьте 1 - шота эспрессо\n2. Подогрейте воду 40/80/120 мл в зависимости от количества шотов эспрессо до 90 - 92С\n3. Влейте воду в кофе. При желании можете добавить сахар" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
