@@ -20,6 +20,7 @@ class RecipeView : AppCompatActivity() {
             putString("title", intent.getStringExtra("title"))
             putString("ingredients", intent.getStringExtra("ingredients"))
             putString("instructions", intent.getStringExtra("instructions"))
+            putString("image_path", intent.getStringExtra("image_path"))
         }
 //        fragmentTransaction.add(R.id.fragmentContainerView, fragment).commit()
 

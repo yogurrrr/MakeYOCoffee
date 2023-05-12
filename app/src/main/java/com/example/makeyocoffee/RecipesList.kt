@@ -41,6 +41,7 @@ class RecipesList : AppCompatActivity() {
                 intent.putExtra("title", model.name)
                 intent.putExtra("ingredients", model.ingredients)
                 intent.putExtra("instructions", model.description)
+                intent.putExtra("image_path", model.imagePath)
                 startActivity(intent)
             }
         })

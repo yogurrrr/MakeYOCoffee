@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 
@@ -28,24 +29,18 @@ class RecipeHolder : Fragment() {
         val title: TextView = view.findViewById(R.id.title)
         val ingredients: TextView = view.findViewById(R.id.ingredients)
         val instructions: TextView = view.findViewById(R.id.instructions)
+        val image: ImageView = view.findViewById(R.id.recipeImage)
 
-//        val db = activity?.let { AppDatabase.getDatabase(it.applicationContext) }
-//        val recipeRepo = db?.let { RecipeRepository(it.recipeDao()) }
-//        val recipes = recipeRepo?.getAllRecipes()
 
-        title.text = arguments?.getString("title")
-        ingredients.text = arguments?.getString("ingredients")
-        instructions.text = arguments?.getString("instructions")
-//        val position = arguments?.getInt("position")
-//        if (position != null) {
-//            val recipe = position.let { recipes?.get(it) }
-//            if (recipe != null) {
-//                title.text = recipe.name
-//                ingredients.text = recipe.ingredients
-//                instructions.text = recipe.description
-//            }
-//        }
-
+        val bundle: Bundle? = arguments
+        if (bundle != null) {
+            title.text = bundle.getString("title")
+            ingredients.text = bundle.getString("ingredients")
+            instructions.text = bundle.getString("instructions")
+            val imagePath = bundle.getString("image_path")
+            val imageId = resources.getIdentifier(imagePath, "drawable", context!!.packageName)
+            image.setImageResource(imageId)
+        }
 
         // Inflate the layout for this fragment
         return view//inflater.inflate(R.layout.fragment_recipe_holder, container, false)
