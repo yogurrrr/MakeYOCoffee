@@ -13,10 +13,10 @@
         android:theme="@style/Theme.MakeYOCoffee"
         tools:targetApi="31">
         <activity
-            android:name=".RecipeView"
+            android:name=".recipes.RecipeView"
             android:exported="false" />
         <activity
-            android:name=".RecipesList"
+            android:name=".recipes.RecipesList"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

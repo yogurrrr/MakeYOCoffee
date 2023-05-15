@@ -1,8 +1,9 @@
-package com.example.makeyocoffee
+package com.example.makeyocoffee.recipes
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentContainerView
+import com.example.makeyocoffee.R
 
 class RecipeView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

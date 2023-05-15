@@ -1,4 +1,4 @@
-package com.example.makeyocoffee
+package com.example.makeyocoffee.recipes
 
 
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.makeyocoffee.R
 
 class RecipeHolder : Fragment() {
     private var param1: Int? = null
