@@ -29,22 +29,11 @@ class RecipeHolder : Fragment() {
         val ingredients: TextView = view.findViewById(R.id.ingredients)
         val instructions: TextView = view.findViewById(R.id.instructions)
 
-//        val db = activity?.let { AppDatabase.getDatabase(it.applicationContext) }
-//        val recipeRepo = db?.let { RecipeRepository(it.recipeDao()) }
-//        val recipes = recipeRepo?.getAllRecipes()
+
 
         title.text = arguments?.getString("title")
         ingredients.text = arguments?.getString("ingredients")
         instructions.text = arguments?.getString("instructions")
-//        val position = arguments?.getInt("position")
-//        if (position != null) {
-//            val recipe = position.let { recipes?.get(it) }
-//            if (recipe != null) {
-//                title.text = recipe.name
-//                ingredients.text = recipe.ingredients
-//                instructions.text = recipe.description
-//            }
-//        }
 
 
         // Inflate the layout for this fragment

@@ -9,24 +9,43 @@ class RecipeView : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipe_view)
 
+
         // Находим контейнер фрагментов в разметке активности
         val fragmentContainer = findViewById<FragmentContainerView>(R.id.fragmentContainerView)
+        val name = intent.getStringExtra("title")
 
-        // Создаем экземпляр фрагмента
-        val exampleFragment = RecipeHolder()
 
-//        val position = intent.getIntExtra("position", -1)
-        exampleFragment.arguments = Bundle().apply {
-            putString("title", intent.getStringExtra("title"))
+        // Создаем экземпляры фрагментов
+        val RecipeHolderFragment = RecipeHolder()
+        val RecipeHolderTimerFragment = RecipeHolderTimer()
+
+
+        RecipeHolderFragment.arguments = Bundle().apply {
+            putString("title", intent.getStringExtra("title")) //name?
             putString("ingredients", intent.getStringExtra("ingredients"))
             putString("instructions", intent.getStringExtra("instructions"))
         }
-//        fragmentTransaction.add(R.id.fragmentContainerView, fragment).commit()
+        RecipeHolderTimerFragment.arguments = Bundle().apply {
+            putString("title", intent.getStringExtra("title")) //name?
+            putString("ingredients", intent.getStringExtra("ingredients"))
+            putString("instructions", intent.getStringExtra("instructions"))
+        }
+
 
         // Добавляем фрагмент в контейнер
         supportFragmentManager.beginTransaction()
-            .replace(fragmentContainer.id, exampleFragment)
+            .replace(fragmentContainer.id, RecipeHolderFragment)
             .commit()
+
+        // Определяем надо ли включать фрагмент с таймером
+        if (name == "Кофе в чашке" || name == "Кофе во френч - прессе" || name == "Кофе V60"){
+            supportFragmentManager.beginTransaction()
+                .replace(fragmentContainer.id, RecipeHolderTimerFragment)
+                .commit()
+
+        }
     }
+
+
 
 }
