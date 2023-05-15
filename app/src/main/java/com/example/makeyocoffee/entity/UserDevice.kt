@@ -17,8 +17,10 @@ import androidx.room.*
             childColumns = ["user_id"],
             onDelete = ForeignKey.CASCADE
         )],
-    indices = [Index(value = ["user_id", "device_id"],
-        unique = true)]
+    indices = [Index(
+        value = ["user_id", "device_id"],
+        unique = true
+    )]
 )
 data class UserDevice(
     @ColumnInfo(name = "user_device_id") @PrimaryKey(autoGenerate = true) val userDeviceId: Int = 0,

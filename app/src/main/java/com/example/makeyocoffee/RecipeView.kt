@@ -15,14 +15,14 @@ class RecipeView : AppCompatActivity() {
         // Создаем экземпляр фрагмента
         val exampleFragment = RecipeHolder()
 
-//        val position = intent.getIntExtra("position", -1)
         exampleFragment.arguments = Bundle().apply {
+            putInt("id", intent.getIntExtra("id", 0))
             putString("title", intent.getStringExtra("title"))
             putString("ingredients", intent.getStringExtra("ingredients"))
             putString("instructions", intent.getStringExtra("instructions"))
             putString("image_path", intent.getStringExtra("image_path"))
+            putInt("like", intent.getIntExtra("like", 0))
         }
-//        fragmentTransaction.add(R.id.fragmentContainerView, fragment).commit()
 
         // Добавляем фрагмент в контейнер
         supportFragmentManager.beginTransaction()

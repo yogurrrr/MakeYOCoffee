@@ -19,8 +19,8 @@ interface RecipeDao {
     suspend fun delete(recipe: Recipe)
 
     @Query("SELECT * FROM recipe")
-    fun getAllRecipes(): List<Recipe>
+    suspend fun getAllRecipes(): List<Recipe>
 
     @RawQuery
-    fun getRecipesByFilters(query: SupportSQLiteQuery) : List<Recipe>
+    suspend fun getRecipesByFilters(query: SupportSQLiteQuery) : List<Recipe>
 }

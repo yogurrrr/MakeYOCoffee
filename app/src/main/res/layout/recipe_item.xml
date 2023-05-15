@@ -40,5 +40,12 @@
             android:layout_weight="1"
             android:text="Молотый кофе 21гр (помол как крупная соль)\nВода 350мл (температура 95С)" />
 
+        <ImageView
+            android:id="@+id/recipeLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/heart" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

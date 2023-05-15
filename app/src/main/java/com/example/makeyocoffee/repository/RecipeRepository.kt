@@ -4,18 +4,19 @@ import android.util.Log
 import androidx.sqlite.db.SimpleSQLiteQuery
 import com.example.makeyocoffee.dao.RecipeDao
 import com.example.makeyocoffee.entity.Recipe
+import kotlinx.coroutines.runBlocking
 
 class RecipeRepository(private val recipeDao: RecipeDao) {
 
-    fun getAllRecipes(): List<Recipe> {
-        return recipeDao.getAllRecipes()
+    fun getAllRecipes(): List<Recipe> = runBlocking {
+        return@runBlocking recipeDao.getAllRecipes()
     }
 
     fun getRecipesByFilters(
         grindingList: ArrayList<String>,
         roastingList: ArrayList<String>,
         devicesList: ArrayList<String>
-    ): List<Recipe> {
+    ): List<Recipe> = runBlocking {
         var query = "SELECT * FROM recipe INNER JOIN device USING(device_id)"
 
         if (grindingList.isNotEmpty() || roastingList.isNotEmpty() || devicesList.isNotEmpty()) {
@@ -52,6 +53,6 @@ class RecipeRepository(private val recipeDao: RecipeDao) {
         }
         Log.d("query", query)
         val rawQuery = SimpleSQLiteQuery(query, arrayOf<Recipe>())
-        return recipeDao.getRecipesByFilters(rawQuery)
+        return@runBlocking recipeDao.getRecipesByFilters(rawQuery)
     }
 }
