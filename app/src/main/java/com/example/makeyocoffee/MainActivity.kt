@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
-import com.example.makeyocoffee.enums.Device
 import com.example.makeyocoffee.recipes.RecipesList
 
 
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             "AEROPRESS" to 0, "CHEMEX" to 0, "FRENCH_PRESS" to 0
         )
 
-        val btn = findViewById<Button>(R.id.buttonNext)
+
         val cbFineGrinding: Button = findViewById(R.id.checkBox_smallGrinding)
         val cbMediumGrinding: Button = findViewById(R.id.checkBox_mediumGrinding)
         val cbLargeGrinding: Button = findViewById(R.id.checkBox_largeGrinding)
@@ -37,11 +36,15 @@ class MainActivity : AppCompatActivity() {
         val cbV60: Button = findViewById(R.id.checkBox_V60)
         val cbGeyser: Button = findViewById(R.id.checkBoxGeyser)
         val cbChemex: Button = findViewById(R.id.checkBoxChemex)
-        val archiveButton = findViewById<Button>(R.id.toArchiveButton)
+
+
+        val btn = findViewById<Button>(R.id.buttonConstuctor)
         val articlesListButton = findViewById<Button>(R.id.toArticlesListButton)
+        val showRecipesButton: Button = findViewById(R.id.buttonToRecipesList)
 
 
-        btn.setOnClickListener {
+
+        showRecipesButton.setOnClickListener {
             val intent = Intent(this, RecipesList::class.java)
 
             val checkedGrinding = ArrayList(grinding.filterValues { it == 1 }.keys)
@@ -56,10 +59,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        archiveButton.setOnClickListener {
-            val intent = Intent(this, ArticleView::class.java)
-            startActivity(intent)
-        }
+
 
         articlesListButton.setOnClickListener {
             val intent = Intent(this, ArticlesList::class.java)
