@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
+import com.example.makeyocoffee.enums.Device
 import com.example.makeyocoffee.recipes.RecipesList
 
 
@@ -34,6 +35,8 @@ class MainActivity : AppCompatActivity() {
         val cbCezve: Button = findViewById(R.id.checkBox_cezve)
         val cbFrenchPress: Button = findViewById(R.id.checkBox_frenchPress)
         val cbV60: Button = findViewById(R.id.checkBox_V60)
+        val cbGeyser: Button = findViewById(R.id.checkBoxGeyser)
+        val cbChemex: Button = findViewById(R.id.checkBoxChemex)
         val archiveButton = findViewById<Button>(R.id.toArchiveButton)
         val articlesListButton = findViewById<Button>(R.id.toArticlesListButton)
 
@@ -149,6 +152,20 @@ class MainActivity : AppCompatActivity() {
             } else {
                 devices["V60"] = 0
                 Log.d("checkbox", "v60 0")
+            }
+        }
+        cbGeyser.setOnClickListener{
+            if (devices["GEYSER"] == 0){
+                devices["GEYSER"] = 1
+            } else{
+                devices["GEYSER"] = 0
+            }
+        }
+        cbChemex.setOnClickListener{
+            if (devices["CHEMEX"] == 0){
+                devices["CHEMEX"] = 1
+            } else{
+                devices["CHEMEX"] = 0
             }
         }
     }
