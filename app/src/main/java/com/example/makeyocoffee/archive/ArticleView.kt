@@ -13,7 +13,7 @@ class ArticleView : AppCompatActivity(){
         val fragmentContainer = findViewById<FrameLayout>(R.id.fragment_container)
 
         // Создаем экземпляр фрагмента
-        val exampleFragment = ArticleСappuccino()
+        val exampleFragment = CoffeeBenefits()
 
         // Добавляем фрагмент в контейнер
         supportFragmentManager.beginTransaction()

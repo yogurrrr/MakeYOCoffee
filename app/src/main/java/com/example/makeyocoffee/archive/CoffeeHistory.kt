@@ -16,7 +16,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [Article_coffee_history.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ArticleCoffeeHistory : Fragment() {
+class CoffeeHistory : Fragment() {
 /*    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
