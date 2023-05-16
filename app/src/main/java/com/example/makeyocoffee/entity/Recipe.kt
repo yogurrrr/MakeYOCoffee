@@ -7,6 +7,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import androidx.room.Ignore
+
 
 @Entity(
     foreignKeys = [
@@ -28,4 +30,7 @@ data class Recipe(
     @ColumnInfo(name = "roasting") val roasting: Roasting,
     @ColumnInfo(name = "device_id") val deviceId: Int,
     @ColumnInfo(name = "image_path") val imagePath: String // R.drawable.ic_delete
-)
+) {
+    @Ignore
+    var like: Int = 0
+}

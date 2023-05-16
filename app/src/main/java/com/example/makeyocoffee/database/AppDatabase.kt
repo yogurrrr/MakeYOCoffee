@@ -4,12 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.makeyocoffee.dao.DeviceDao
+import com.example.makeyocoffee.dao.LikeDao
 import com.example.makeyocoffee.dao.RecipeDao
 import com.example.makeyocoffee.entity.*
 
 @Database(
-    entities = [Article::class, Device::class, Recipe::class, User::class, UserDevice::class],
+    entities = [Article::class, Device::class, Recipe::class, User::class, UserDevice::class, Like::class],
     version = 1,
     exportSchema = false
 )
@@ -30,4 +30,5 @@ abstract class AppDatabase : RoomDatabase() {
     }
 
     abstract fun recipeDao(): RecipeDao
+    abstract fun likeDao(): LikeDao
 }

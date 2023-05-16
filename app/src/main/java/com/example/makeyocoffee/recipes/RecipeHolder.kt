@@ -5,8 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.makeyocoffee.database.AppDatabase
+import com.example.makeyocoffee.repository.LikeRepository
 import com.example.makeyocoffee.R
 
 class RecipeHolder : Fragment() {
@@ -29,13 +33,39 @@ class RecipeHolder : Fragment() {
         val title: TextView = view.findViewById(R.id.title)
         val ingredients: TextView = view.findViewById(R.id.ingredients)
         val instructions: TextView = view.findViewById(R.id.instructions)
+        val image: ImageView = view.findViewById(R.id.image)
+        val likeBtn: ImageView = view.findViewById(R.id.like)
 
+        val bundle: Bundle? = arguments
+        var likeVal = 0
+        var recipeId = 0
+        if (bundle != null) {
+            recipeId = bundle.getInt("id")
+            title.text = bundle.getString("title")
+            ingredients.text = bundle.getString("ingredients")
+            instructions.text = bundle.getString("instructions")
+            val imagePath = bundle.getString("image_path")
+            val imageId = resources.getIdentifier(imagePath, "drawable", context!!.packageName)
+            image.setImageResource(imageId)
+            likeVal = bundle.getInt("like")
+            if (likeVal == 1) {
+                likeBtn.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.heart_filled))
+            }
+        }
 
+        val db = AppDatabase.getDatabase(requireContext())
+        val likeRepo = LikeRepository(db.likeDao())
 
-        title.text = arguments?.getString("title")
-        ingredients.text = arguments?.getString("ingredients")
-        instructions.text = arguments?.getString("instructions")
-
+        likeBtn.setOnClickListener {
+            if (likeVal == 1) {
+                likeBtn.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.heart))
+                likeRepo.deleteLike(recipeId)
+            }
+            else {
+                likeBtn.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.heart_filled))
+                likeRepo.addLike(recipeId)
+            }
+        }
 
         // Inflate the layout for this fragment
         return view//inflater.inflate(R.layout.fragment_recipe_holder, container, false)
