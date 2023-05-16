@@ -50,6 +50,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="1. Вставьте бумажный фильтр в воронку\n2. Пролейте через фильтр немного горячей воды чтобы смочить его и очистить\n3. Засыпьте кофе в воронку и легкими движениями распределите зерно равномерно \n4. Пролейте за 20 секунд 50 грамм воды\n5. Подождите 10 секунд \n6. Пролейте за 30 секунд 100 грамм воды \n7. Подождите 15 секунд \n8. Вылейте оставшийся объем за 30 секунд\n9. Дождитесь когда вода полностью пройдет через кофе" />
+            <TextView
+                android:id="@+id/timerTitile"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Таймер" />
+
+            <TextView
+                android:id="@+id/timer"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+            <Button
+                android:id="@+id/buttonTimer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Старт" />
 
         </LinearLayout>
 

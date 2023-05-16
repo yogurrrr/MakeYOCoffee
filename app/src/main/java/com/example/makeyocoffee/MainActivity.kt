@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
-import com.example.makeyocoffee.entity.Recipe
+import com.example.makeyocoffee.recipes.RecipesList
 
 
 class MainActivity : AppCompatActivity() {
