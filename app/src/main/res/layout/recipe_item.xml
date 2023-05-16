@@ -23,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/montserrat"
             android:text="Кофе во френч - прессе"
             android:textStyle="bold" />
 
@@ -31,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/montserrat"
             android:text="Насыщенный чёрный кофе" />
 
         <TextView
@@ -38,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/montserrat"
             android:text="Молотый кофе 21гр (помол как крупная соль)\nВода 350мл (температура 95С)" />
 
     </LinearLayout>
