@@ -1,14 +1,24 @@
 package com.example.makeyocoffee.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.makeyocoffee.R
+import com.example.makeyocoffee.database.AppDatabase
 import com.example.makeyocoffee.entity.Recipe
+import com.example.makeyocoffee.repository.LikeRepository
 
-class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
+class RecipeAdapter(context: Context) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
+    private var context: Context
+
+    init {
+        this.context = context
+    }
 
     private var recipesList = emptyList<Recipe>()
 
@@ -36,6 +46,30 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
         holder.itemView.setOnClickListener {
             if (onClickListener != null) {
                 onClickListener!!.onClick(position, recipe)
+            }
+        }
+
+        val likeBtn = holder.itemView.findViewById<ImageView>(R.id.recipeLike)
+        if (recipe.like == 1) {
+            likeBtn.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.heart_filled))
+        }
+        else {
+            likeBtn.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.heart))
+        }
+
+        val db = AppDatabase.getDatabase(context)
+        val likeRepo = LikeRepository(db.likeDao())
+
+        likeBtn.setOnClickListener {
+            if (recipe.like == 1) {
+                likeBtn.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.heart))
+                recipe.like = 0
+                likeRepo.deleteLike(recipe.recipe_id)
+            }
+            else {
+                likeBtn.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.heart_filled))
+                recipe.like = 1
+                likeRepo.addLike(recipe.recipe_id)
             }
         }
     }
