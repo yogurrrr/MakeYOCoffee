@@ -22,9 +22,12 @@ class RecipeView : AppCompatActivity() {
 
 
         RecipeHolderFragment.arguments = Bundle().apply {
+            putInt("id", intent.getIntExtra("id", 0))
             putString("title", intent.getStringExtra("title")) //name?
             putString("ingredients", intent.getStringExtra("ingredients"))
             putString("instructions", intent.getStringExtra("instructions"))
+            putString("image_path", intent.getStringExtra("image_path"))
+            putInt("like", intent.getIntExtra("like", -1))
         }
         RecipeHolderTimerFragment.arguments = Bundle().apply {
             putString("title", intent.getStringExtra("title")) //name?
