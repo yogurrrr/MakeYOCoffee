@@ -46,10 +46,6 @@ class RecipesList : AppCompatActivity() {
             }
         })
 
-        val btn = findViewById<Button>(R.id.buttonShow)
-        btn.setOnClickListener {
-            val intent = Intent(this@RecipesList, RecipeView::class.java)
-            startActivity(intent)
-        }
+
     }
 }
