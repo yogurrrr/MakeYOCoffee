@@ -1,5 +1,6 @@
 package com.example.makeyocoffee.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,12 @@ import com.example.makeyocoffee.R
 import com.example.makeyocoffee.entity.Article
 import com.example.makeyocoffee.entity.Recipe
 
-class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
+class ArticleAdapter(context: Context) : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
+    private var context: Context
+
+    init {
+        this.context = context
+    }
 
     private var articlesList = emptyList<Article>()
 
@@ -31,7 +37,11 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = articlesList[position]
         holder.itemView.findViewById<TextView>(R.id.articleName).text = article.title
-        holder.itemView.findViewById<TextView>(R.id.imagePath).text = article.imagePath
+        val image = holder.itemView.findViewById<ImageView>(R.id.imagePath)
+        val imagePath = article.imagePath
+        val imageId = context.resources.getIdentifier(imagePath, "drawable", context!!.packageName)
+        image.setImageResource(imageId)
+
         holder.itemView.setOnClickListener {
             if (onClickListener != null) {
                 onClickListener!!.onClick(position, article)

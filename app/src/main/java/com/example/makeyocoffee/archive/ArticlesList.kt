@@ -19,11 +19,11 @@ class ArticlesList : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_articles_list)
 
-        val adapter = ArticleAdapter()//сюда передать data, предварительно добавив адаптеру конструктор
+        val adapter = ArticleAdapter(applicationContext)
         val articlesView = findViewById<RecyclerView>(R.id.articlesRecyclerView)
         articlesView.adapter = adapter
         articlesView.layoutManager =
-            LinearLayoutManager(this) // когда будет фрагмент вместо this поставить requireContext()
+            LinearLayoutManager(this)
 
         val db = AppDatabase.getDatabase(this)
         val articleRepo = ArticleRepository(db.articleDao())
@@ -34,6 +34,7 @@ class ArticlesList : AppCompatActivity() {
             ArticleAdapter.OnClickListener {
             override fun onClick(position: Int, model: Article) {
                 val intent = Intent(this@ArticlesList, ArticleView::class.java)
+                intent.putExtra("title", model.title)
                 startActivity(intent)
             }
         })
