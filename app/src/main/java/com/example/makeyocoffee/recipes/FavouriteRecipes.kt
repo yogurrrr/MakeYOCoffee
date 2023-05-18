@@ -1,54 +1,42 @@
 package com.example.makeyocoffee.recipes
 
 import android.content.Intent
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.makeyocoffee.R
+import com.example.makeyocoffee.adapter.FavouriteRecipeAdapter
 import com.example.makeyocoffee.adapter.RecipeAdapter
 import com.example.makeyocoffee.database.AppDatabase
 import com.example.makeyocoffee.entity.Recipe
 import com.example.makeyocoffee.repository.LikeRepository
 import com.example.makeyocoffee.repository.RecipeRepository
 
-class RecipesList : AppCompatActivity() {
-
+class FavouriteRecipes : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recipes_list)
+        setContentView(R.layout.activity_favourite_recipes)
 
-        val adapter = RecipeAdapter(applicationContext)
-        val recipesView = findViewById<RecyclerView>(R.id.recipesRecyclerView)
+        val adapter = FavouriteRecipeAdapter(applicationContext)
+        val recipesView = findViewById<RecyclerView>(R.id.favouriteRecipesRecView)
         recipesView.adapter = adapter
         recipesView.layoutManager =
             LinearLayoutManager(this)
 
-        val intent = intent
-        val grindingList = intent.getStringArrayListExtra("grindingList")!!
-        val roastingList = intent.getStringArrayListExtra("roastingList")!!
-        val devicesList = intent.getStringArrayListExtra("devicesList")!!
-
         val db = AppDatabase.getDatabase(this)
-        val recipeRepo = RecipeRepository(db.recipeDao())
-        val recipes = recipeRepo.getRecipesByFilters(grindingList, roastingList, devicesList)
-
-        val recipeIds = mutableListOf<Int>()
-        recipes.forEach { recipeIds.add(it.recipe_id) }
         val likeRepo = LikeRepository(db.likeDao())
-        val likes = likeRepo.getLikes(recipeIds)
+        val recipeIds = likeRepo.getAllLikes()
 
-        recipes.forEach {
-            if (it.recipe_id in likes) {
-                it.like = 1
-            }
-        }
+        val recipeRepo = RecipeRepository(db.recipeDao())
+        val recipes = recipeRepo.getRecipesById(recipeIds)
+        recipes.forEach { it.like = 1 }
+
         adapter.setData(recipes)
-
         adapter.setOnClickListener(object :
-            RecipeAdapter.OnClickListener {
+            FavouriteRecipeAdapter.OnClickListener {
             override fun onClick(position: Int, model: Recipe) {
-                val intent = Intent(this@RecipesList, RecipeView::class.java)
+                val intent = Intent(this@FavouriteRecipes, RecipeView::class.java)
                 intent.putExtra("id", model.recipe_id)
                 intent.putExtra("title", model.name)
                 intent.putExtra("ingredients", model.ingredients)
@@ -58,11 +46,5 @@ class RecipesList : AppCompatActivity() {
                 startActivity(intent)
             }
         })
-
-//        val btn = findViewById<Button>(R.id.buttonShow)
-//        btn.setOnClickListener {
-//            val intent = Intent(this@RecipesList, RecipeView::class.java)
-//            startActivity(intent)
-//        }
     }
 }

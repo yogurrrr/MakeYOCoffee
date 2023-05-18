@@ -25,4 +25,7 @@ interface LikeDao {
 
     @Query("INSERT INTO like (user_id, recipe_id) VALUES (1, :recipe_id)")
     suspend fun insertLike(recipe_id: Int)
+
+    @Query("SELECT recipe_id FROM like WHERE user_id = 1")
+    suspend fun getAllLikes(): List<Int>
 }

@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import com.example.makeyocoffee.enums.Device
+import com.example.makeyocoffee.recipes.FavouriteRecipes
 import com.example.makeyocoffee.recipes.RecipesList
 
 
@@ -17,10 +18,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //словари хранят значения чекбоксов
-        var grinding =
-            hashMapOf<String, Int>("FINE" to 0, "MEDIUM" to 0, "LARGE" to 0)
-        var roasting = hashMapOf<String, Int>("MEDIUM" to 0, "DARK" to 0) //filter, espresso
-        var devices = hashMapOf<String, Int>(
+        val grinding = hashMapOf("FINE" to 0, "MEDIUM" to 0, "LARGE" to 0)
+        val roasting = hashMapOf("MEDIUM" to 0, "DARK" to 0) //filter, espresso
+        val devices = hashMapOf(
             "CEZVE" to 0, "COFFEE_MACHINE" to 0, "GEYSER" to 0, "V60" to 0,
             "AEROPRESS" to 0, "CHEMEX" to 0, "FRENCH_PRESS" to 0
         )
@@ -167,6 +167,11 @@ class MainActivity : AppCompatActivity() {
             } else{
                 devices["CHEMEX"] = 0
             }
+        }
+        val favouriteBtn = findViewById<Button>(R.id.favouriteRecipesButton)
+        favouriteBtn.setOnClickListener {
+            val intent = Intent(this, FavouriteRecipes::class.java)
+            startActivity(intent)
         }
     }
 

@@ -12,6 +12,10 @@ class RecipeRepository(private val recipeDao: RecipeDao) {
         return@runBlocking recipeDao.getAllRecipes()
     }
 
+    fun getRecipesById(recipes: List<Int>): List<Recipe> = runBlocking {
+        return@runBlocking recipeDao.getRecipesById(recipes)
+    }
+
     fun getRecipesByFilters(
         grindingList: ArrayList<String>,
         roastingList: ArrayList<String>,

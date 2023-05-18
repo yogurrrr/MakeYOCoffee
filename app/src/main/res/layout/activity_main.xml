@@ -194,4 +194,14 @@
         app:layout_constraintStart_toEndOf="@+id/checkBoxGeyser"
         app:layout_constraintTop_toBottomOf="@+id/checkBox_V60" />
 
+    <Button
+        android:id="@+id/favouriteRecipesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Favourite"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/checkBox_largeGrinding"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox_filterRoast" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

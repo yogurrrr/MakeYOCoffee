@@ -16,4 +16,8 @@ class LikeRepository(private val likeDao: LikeDao) {
     fun deleteLike(recipe_id: Int) = runBlocking {
         return@runBlocking likeDao.deleteLike(recipe_id)
     }
+
+    fun getAllLikes(): List<Int> = runBlocking {
+        return@runBlocking likeDao.getAllLikes()
+    }
 }

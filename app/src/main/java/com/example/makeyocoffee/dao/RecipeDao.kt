@@ -23,4 +23,7 @@ interface RecipeDao {
 
     @RawQuery
     suspend fun getRecipesByFilters(query: SupportSQLiteQuery) : List<Recipe>
+
+    @Query("SELECT * FROM recipe WHERE recipe_id IN (:recipes)")
+    suspend fun getRecipesById(recipes: List<Int>): List<Recipe>
 }
