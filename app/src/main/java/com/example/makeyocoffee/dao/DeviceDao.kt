@@ -1,7 +1,6 @@
 package com.example.makeyocoffee.dao
 
 import androidx.room.*
-import com.example.makeyocoffee.entity.Article
 import com.example.makeyocoffee.entity.Device
 
 @Dao
@@ -18,4 +17,6 @@ interface DeviceDao {
     @Delete
     suspend fun delete(device: Device)
 
+    @Query("SELECT device_id FROM device WHERE device_name IN (:deviceNames)")
+    suspend fun getDevicesByName(deviceNames: List<String>): List<Int>
 }

@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
-import com.example.makeyocoffee.enums.Device
+import android.widget.CheckBox
+import com.example.makeyocoffee.database.AppDatabase
 import com.example.makeyocoffee.recipes.FavouriteRecipes
 import com.example.makeyocoffee.recipes.RecipesList
+import com.example.makeyocoffee.repository.DeviceRepository
+import com.example.makeyocoffee.repository.UserDeviceRepository
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +27,8 @@ class MainActivity : AppCompatActivity() {
             "CEZVE" to 0, "COFFEE_MACHINE" to 0, "GEYSER" to 0, "V60" to 0,
             "AEROPRESS" to 0, "CHEMEX" to 0, "FRENCH_PRESS" to 0
         )
+        val db = AppDatabase.getDatabase(this)
+        val userDeviceRepo = UserDeviceRepository(db.userDeviceDao())
 
         val btn = findViewById<Button>(R.id.buttonNext)
         val cbFineGrinding: Button = findViewById(R.id.checkBox_smallGrinding)
@@ -31,12 +36,12 @@ class MainActivity : AppCompatActivity() {
         val cbLargeGrinding: Button = findViewById(R.id.checkBox_largeGrinding)
         val cbDarkRoasting: Button = findViewById(R.id.checkBox_espressoRoast)
         val cbMediumRoasting: Button = findViewById(R.id.checkBox_filterRoast)
-        val cbCoffeeMachine: Button = findViewById(R.id.checkBox_coffeMachine)
-        val cbCezve: Button = findViewById(R.id.checkBox_cezve)
-        val cbFrenchPress: Button = findViewById(R.id.checkBox_frenchPress)
-        val cbV60: Button = findViewById(R.id.checkBox_V60)
-        val cbGeyser: Button = findViewById(R.id.checkBoxGeyser)
-        val cbChemex: Button = findViewById(R.id.checkBoxChemex)
+        val cbCoffeeMachine: CheckBox = findViewById(R.id.checkBox_coffeMachine)
+        val cbCezve: CheckBox = findViewById(R.id.checkBox_cezve)
+        val cbFrenchPress: CheckBox = findViewById(R.id.checkBox_frenchPress)
+        val cbV60: CheckBox = findViewById(R.id.checkBox_V60)
+        val cbGeyser: CheckBox = findViewById(R.id.checkBoxGeyser)
+        val cbChemex: CheckBox = findViewById(R.id.checkBoxChemex)
         val archiveButton = findViewById<Button>(R.id.toArchiveButton)
         val articlesListButton = findViewById<Button>(R.id.toArticlesListButton)
 
@@ -52,6 +57,10 @@ class MainActivity : AppCompatActivity() {
 
             val checkedDevices = ArrayList(devices.filterValues { it == 1 }.keys)
             intent.putStringArrayListExtra("devicesList", checkedDevices)
+
+            val deviceRepo = DeviceRepository(db.deviceDao())
+            val deviceIds = deviceRepo.getDevicesByName(checkedDevices)
+            userDeviceRepo.updateDevices(deviceIds)
 
             startActivity(intent)
         }
@@ -172,6 +181,19 @@ class MainActivity : AppCompatActivity() {
         favouriteBtn.setOnClickListener {
             val intent = Intent(this, FavouriteRecipes::class.java)
             startActivity(intent)
+        }
+
+        val previousDevices = userDeviceRepo.getDevices()
+        previousDevices.forEach {
+            devices[it] = 1
+            when (it) {
+                "COFFEE_MACHINE" -> cbCoffeeMachine.isChecked = true
+                "CEZVE" -> cbCezve.isChecked = true
+                "FRENCH_PRESS" -> cbFrenchPress.isChecked = true
+                "V60" -> cbV60.isChecked = true
+                "GEYSER" -> cbGeyser.isChecked = true
+                "CHEMEX" -> cbChemex.isChecked = true
+            }
         }
     }
 

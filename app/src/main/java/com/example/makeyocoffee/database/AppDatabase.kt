@@ -4,9 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.makeyocoffee.dao.ArticleDao
-import com.example.makeyocoffee.dao.LikeDao
-import com.example.makeyocoffee.dao.RecipeDao
+import com.example.makeyocoffee.dao.*
 import com.example.makeyocoffee.entity.*
 
 @Database(
@@ -33,4 +31,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun recipeDao(): RecipeDao
     abstract fun likeDao(): LikeDao
     abstract fun articleDao(): ArticleDao
+    abstract fun userDeviceDao(): UserDeviceDao
+    abstract fun deviceDao(): DeviceDao
 }
