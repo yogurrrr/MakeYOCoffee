@@ -2,7 +2,6 @@ package com.example.makeyocoffee.dao
 
 import androidx.room.*
 import com.example.makeyocoffee.entity.Article
-import com.example.makeyocoffee.entity.Recipe
 
 @Dao
 interface ArticleDao {
@@ -19,5 +18,5 @@ interface ArticleDao {
     suspend fun delete(article: Article)
 
     @Query("SELECT * FROM article")
-    fun getAllArticles(): List<Article>
+    suspend fun getAllArticles(): List<Article>
 }

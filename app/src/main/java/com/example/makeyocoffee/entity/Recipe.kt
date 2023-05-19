@@ -29,7 +29,7 @@ data class Recipe(
     @ColumnInfo(name = "grinding") val grinding: Grinding,
     @ColumnInfo(name = "roasting") val roasting: Roasting,
     @ColumnInfo(name = "device_id") val deviceId: Int,
-    @ColumnInfo(name = "image_path") val imagePath: String // R.drawable.ic_delete
+    @ColumnInfo(name = "image_path") val imagePath: String
 ) {
     @Ignore
     var like: Int = 0
