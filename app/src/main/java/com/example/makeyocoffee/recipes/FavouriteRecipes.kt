@@ -3,11 +3,11 @@ package com.example.makeyocoffee.recipes
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.makeyocoffee.R
 import com.example.makeyocoffee.adapter.FavouriteRecipeAdapter
-import com.example.makeyocoffee.adapter.RecipeAdapter
 import com.example.makeyocoffee.database.AppDatabase
 import com.example.makeyocoffee.entity.Recipe
 import com.example.makeyocoffee.repository.LikeRepository
@@ -33,6 +33,12 @@ class FavouriteRecipes : AppCompatActivity() {
         recipes.forEach { it.like = 1 }
 
         adapter.setData(recipes)
+
+        if (recipes.isEmpty()) {
+            val textNoFavRecipes = findViewById<TextView>(R.id.textNoFavRecipes)
+            textNoFavRecipes.visibility = 1
+        }
+
         adapter.setOnClickListener(object :
             FavouriteRecipeAdapter.OnClickListener {
             override fun onClick(position: Int, model: Recipe) {

@@ -2,6 +2,7 @@ package com.example.makeyocoffee.recipes
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -44,6 +45,11 @@ class RecipesList : AppCompatActivity() {
             }
         }
         adapter.setData(recipes)
+
+        if (recipes.isEmpty()) {
+            val textNoRecipes = findViewById<TextView>(R.id.textNoRecipes)
+            textNoRecipes.visibility = 1
+        }
 
         adapter.setOnClickListener(object :
             RecipeAdapter.OnClickListener {

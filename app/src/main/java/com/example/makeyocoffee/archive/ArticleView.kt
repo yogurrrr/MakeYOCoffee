@@ -16,17 +16,17 @@ class ArticleView : AppCompatActivity(){
         // Создаем экземпляр фрагмента
         lateinit var exampleFragment : Fragment
         when (intent.getStringExtra("title")) {
-            "CoffeeBenefits" -> exampleFragment = CoffeeBenefits()
-            "CoffeeDivination" -> exampleFragment = CoffeeDivination()
-            "CoffeeHistory" -> exampleFragment = CoffeeHistory()
-            "CoffeeMyths" -> exampleFragment = CoffeeMyths()
-            "HowCoffeeGrows" -> exampleFragment = HowCoffeeGrows()
-            "LatteArt" -> exampleFragment = LatteArt()
-            "Moka" -> exampleFragment = Moka()
-            "PourOver" -> exampleFragment = PourOver()
-            "RemovingStains" -> exampleFragment = RemovingStains()
-            //"Cappuccino" -> exampleFragment = Cappuccino()
-            //"CoffeeCalories" -> exampleFragment = CoffeeCalories()
+            "Польза кофе" -> exampleFragment = CoffeeBenefits()
+            "Гадание на кофейной гуще" -> exampleFragment = CoffeeDivination()
+            "История кофе" -> exampleFragment = CoffeeHistory()
+            "Мифы о кофе" -> exampleFragment = CoffeeMyths()
+            "Как растет кофе" -> exampleFragment = HowCoffeeGrows()
+            "Латте-арт" -> exampleFragment = LatteArt()
+            "Гейзерная кофеварка" -> exampleFragment = Moka()
+            "Кофе пуровер" -> exampleFragment = PourOver()
+            "Как вывести кофейные пятна" -> exampleFragment = RemovingStains()
+            //"Капучино" -> exampleFragment = Cappuccino()
+            //"Калорийность кофе" -> exampleFragment = CoffeeCalories()
         }
 
         // Добавляем фрагмент в контейнер

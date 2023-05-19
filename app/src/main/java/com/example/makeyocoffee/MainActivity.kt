@@ -175,7 +175,7 @@ class MainActivity : AppCompatActivity() {
                 devices["CHEMEX"] = 0
             }
         }
-        val favouriteBtn = findViewById<Button>(R.id.favouriteRecipesButton)
+        val favouriteBtn = findViewById<Button>(R.id.buttonFavorite)
         favouriteBtn.setOnClickListener {
             val intent = Intent(this, FavouriteRecipes::class.java)
             startActivity(intent)
