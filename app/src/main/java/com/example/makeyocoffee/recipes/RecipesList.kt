@@ -2,10 +2,13 @@ package com.example.makeyocoffee.recipes
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.makeyocoffee.ArticlesList
+import com.example.makeyocoffee.MainActivity
 import com.example.makeyocoffee.R
 import com.example.makeyocoffee.adapter.RecipeAdapter
 import com.example.makeyocoffee.database.AppDatabase
@@ -19,6 +22,9 @@ class RecipesList : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipes_list)
 
+        val constructorButton = findViewById<Button>(R.id.buttonConstuctor)
+        val favouriteBtton = findViewById<Button>(R.id.buttonFavorite)
+        val articlesListButton = findViewById<Button>(R.id.toArticlesListButton)
         val adapter = RecipeAdapter(applicationContext)
         val recipesView = findViewById<RecyclerView>(R.id.recipesRecyclerView)
         recipesView.adapter = adapter
@@ -64,5 +70,22 @@ class RecipesList : AppCompatActivity() {
                 startActivity(intent)
             }
         })
+
+
+        favouriteBtton.setOnClickListener {
+            val intent = Intent(this, FavouriteRecipes::class.java)
+            startActivity(intent)
+        }
+        articlesListButton.setOnClickListener {
+            val intent = Intent(this, ArticlesList::class.java)
+            startActivity(intent)
+        }
+        constructorButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
     }
 }

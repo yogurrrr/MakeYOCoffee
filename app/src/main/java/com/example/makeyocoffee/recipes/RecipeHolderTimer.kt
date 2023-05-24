@@ -23,15 +23,12 @@ class RecipeHolderTimer : Fragment() {
     private lateinit var timer: CountDownTimer
     private lateinit var isV60: String
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getInt("position")
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -76,14 +73,9 @@ class RecipeHolderTimer : Fragment() {
                 startTimer(time)
                 timerIsOn = true
             }
-
-
         }
-
-
-
         // Inflate the layout for this fragment
-        return view//inflater.inflate(R.layout.fragment_recipe_holder_timer, container, false)
+        return view
     }
     private fun startTimer(time: Long) {
         timer = object : CountDownTimer(time, 1000) {
@@ -92,7 +84,6 @@ class RecipeHolderTimer : Fragment() {
                 timerTextView.text = String.format("%02d:%02d", seconds / 60, seconds % 60)
 
             }
-
             override fun onFinish() {
                 timerTextView.text = "00:00"
                 val time: Long
@@ -121,7 +112,6 @@ class RecipeHolderTimer : Fragment() {
                     startTimer(time)
                     titletimer.text = "Таймер"
                 }
-
             }
         }
         timer.start()

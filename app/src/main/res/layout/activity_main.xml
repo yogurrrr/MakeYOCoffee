@@ -245,7 +245,6 @@
         android:layout_width="130dp"
         android:layout_height="48dp"
         android:layout_marginBottom="44dp"
-
         android:background="@drawable/rounded_corner"
         android:bottomLeftRadius="20dp"
         android:bottomRightRadius="10dp"

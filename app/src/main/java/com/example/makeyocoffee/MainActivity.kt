@@ -15,7 +15,6 @@ import com.example.makeyocoffee.repository.UserDeviceRepository
 
 class MainActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -44,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         val articlesListButton = findViewById<Button>(R.id.toArticlesListButton)
         val showRecipesButton: Button = findViewById(R.id.buttonToRecipesList)
-
+        val favouriteBtton = findViewById<Button>(R.id.buttonFavorite)
 
 
         showRecipesButton.setOnClickListener {
@@ -175,8 +174,8 @@ class MainActivity : AppCompatActivity() {
                 devices["CHEMEX"] = 0
             }
         }
-        val favouriteBtn = findViewById<Button>(R.id.buttonFavorite)
-        favouriteBtn.setOnClickListener {
+
+        favouriteBtton.setOnClickListener {
             val intent = Intent(this, FavouriteRecipes::class.java)
             startActivity(intent)
         }
