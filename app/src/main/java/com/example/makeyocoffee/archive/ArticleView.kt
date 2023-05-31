@@ -32,8 +32,6 @@ class ArticleView : AppCompatActivity(){
             "Гейзерная кофеварка" -> exampleFragment = Moka()
             " Кофе пуровер" -> exampleFragment = PourOver()
             "Как вывести кофейные пятна" -> exampleFragment = RemovingStains()
-            //"Капучино" -> exampleFragment = Cappuccino()
-            //"Калорийность кофе" -> exampleFragment = CoffeeCalories()
         }
 
         // Добавляем фрагмент в контейнер
