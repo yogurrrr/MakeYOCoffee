@@ -34,7 +34,7 @@ class HowCoffeeGrows : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_article_how_coffee_grows, container, false)
+        return inflater.inflate(R.layout.fragment_article_how_coffee_grows1, container, false)
     }
 
  /*   companion object {

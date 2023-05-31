@@ -57,7 +57,6 @@ class ArticleAdapter(context: Context) : RecyclerView.Adapter<ArticleAdapter.Art
         this.onClickListener = onClickListener
     }
 
-
     fun setData(articles: List<Article>) {
         this.articlesList = articles
         notifyDataSetChanged()

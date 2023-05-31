@@ -2,17 +2,13 @@ package com.example.makeyocoffee
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.makeyocoffee.adapter.ArticleAdapter
-import com.example.makeyocoffee.adapter.RecipeAdapter
 import com.example.makeyocoffee.database.AppDatabase
 import com.example.makeyocoffee.entity.Article
-import com.example.makeyocoffee.entity.Recipe
 import com.example.makeyocoffee.repository.ArticleRepository
-import com.example.makeyocoffee.repository.RecipeRepository
 
 class ArticlesList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
