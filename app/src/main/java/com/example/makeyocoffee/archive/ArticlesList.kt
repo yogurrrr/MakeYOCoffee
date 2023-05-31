@@ -22,7 +22,6 @@ class ArticlesList : AppCompatActivity() {
 
         val constructorButton = findViewById<Button>(R.id.buttonConstuctor)
         val favouriteBtton = findViewById<Button>(R.id.buttonFavorite)
-        val articlesListButton = findViewById<Button>(R.id.toArticlesListButton)
 
         val adapter = ArticleAdapter(applicationContext)
         val articlesView = findViewById<RecyclerView>(R.id.articlesRecyclerView)
@@ -47,10 +46,6 @@ class ArticlesList : AppCompatActivity() {
 
         favouriteBtton.setOnClickListener {
             val intent = Intent(this, FavouriteRecipes::class.java)
-            startActivity(intent)
-        }
-        articlesListButton.setOnClickListener {
-            val intent = Intent(this, ArticlesList::class.java)
             startActivity(intent)
         }
         constructorButton.setOnClickListener {

@@ -22,7 +22,6 @@ class FavouriteRecipes : AppCompatActivity() {
         setContentView(R.layout.activity_favourite_recipes)
 
         val constructorButton = findViewById<Button>(R.id.buttonConstuctor)
-        val favouriteBtton = findViewById<Button>(R.id.buttonFavorite)
         val articlesListButton = findViewById<Button>(R.id.toArticlesListButton)
 
         val adapter = FavouriteRecipeAdapter(applicationContext)
@@ -59,10 +58,6 @@ class FavouriteRecipes : AppCompatActivity() {
                 startActivity(intent)
             }
         })
-        favouriteBtton.setOnClickListener {
-            val intent = Intent(this, FavouriteRecipes::class.java)
-            startActivity(intent)
-        }
         articlesListButton.setOnClickListener {
             val intent = Intent(this, ArticlesList::class.java)
             startActivity(intent)
