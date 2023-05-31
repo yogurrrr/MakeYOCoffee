@@ -17,7 +17,7 @@ interface UserDeviceDao {
     @Delete
     suspend fun delete(userDevice: UserDevice)
 
-    @Query("SELECT device_name FROM user_device INNER JOIN device USING (device_id)")
+    @Query("SELECT device_name FROM user_device INNER JOIN device USING (device_id) WHERE user_id = 1")
     suspend fun getDevices(): List<String>
 
     @Query("DELETE FROM user_device WHERE user_id = 1")
