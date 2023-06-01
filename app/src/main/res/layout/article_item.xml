@@ -9,7 +9,7 @@
         android:id="@+id/imagePath"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/cappuccino0" />
+        app:srcCompat="@drawable/coffee_benefits1" />
 
     <TextView
         android:id="@+id/articleName"
