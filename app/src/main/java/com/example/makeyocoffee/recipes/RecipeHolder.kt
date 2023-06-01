@@ -49,7 +49,12 @@ class RecipeHolder : Fragment() {
             image.setImageResource(imageId)
             likeVal = bundle.getInt("like")
             if (likeVal == 1) {
-                likeBtn.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.heart_filled))
+                likeBtn.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.heart_filled
+                    )
+                )
             }
         }
 
@@ -58,12 +63,23 @@ class RecipeHolder : Fragment() {
 
         likeBtn.setOnClickListener {
             if (likeVal == 1) {
-                likeBtn.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.heart))
+                likeBtn.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.heart
+                    )
+                )
                 likeRepo.deleteLike(recipeId)
-            }
-            else {
-                likeBtn.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.heart_filled))
+                likeVal = 0
+            } else {
+                likeBtn.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.heart_filled
+                    )
+                )
                 likeRepo.addLike(recipeId)
+                likeVal = 1
             }
         }
 

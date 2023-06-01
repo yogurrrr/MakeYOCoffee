@@ -22,10 +22,9 @@ class RecipeView : AppCompatActivity() {
         val name = intent.getStringExtra("title")
 
         // Создаем экземпляры фрагментов
-        val RecipeHolderFragment = RecipeHolder()
-        val RecipeHolderTimerFragment = RecipeHolderTimer()
-
-        RecipeHolderFragment.arguments = Bundle().apply {
+        val recipeHolderFragment = RecipeHolder()
+        val recipeHolderTimerFragment = RecipeHolderTimer()
+        val bundle = Bundle().apply {
             putInt("id", intent.getIntExtra("id", 0))
             putString("title", intent.getStringExtra("title"))
             putString("ingredients", intent.getStringExtra("ingredients"))
@@ -33,22 +32,20 @@ class RecipeView : AppCompatActivity() {
             putString("image_path", intent.getStringExtra("image_path"))
             putInt("like", intent.getIntExtra("like", -1))
         }
-        RecipeHolderTimerFragment.arguments = Bundle().apply {
-            putString("title", intent.getStringExtra("title")) //name?
-            putString("ingredients", intent.getStringExtra("ingredients"))
-            putString("instructions", intent.getStringExtra("instructions"))
-        }
+
+        recipeHolderFragment.arguments = bundle
+        recipeHolderTimerFragment.arguments = bundle
 
 
         // Добавляем фрагмент в контейнер
         supportFragmentManager.beginTransaction()
-            .replace(fragmentContainer.id, RecipeHolderFragment)
+            .replace(fragmentContainer.id, recipeHolderFragment)
             .commit()
 
         // Определяем надо ли включать фрагмент с таймером
-        if (name == "Кофе в чашке" || name == "Кофе во френч - прессе" || name == "Кофе V60"){
+        if (name == "Кофе в чашке" || name == "Кофе во френч - прессе" || name == "Кофе V60") {
             supportFragmentManager.beginTransaction()
-                .replace(fragmentContainer.id, RecipeHolderTimerFragment)
+                .replace(fragmentContainer.id, recipeHolderTimerFragment)
                 .commit()
 
         }
@@ -67,7 +64,6 @@ class RecipeView : AppCompatActivity() {
         }
 
     }
-
 
 
 }
